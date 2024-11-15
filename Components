@@ -1,1 +1,60 @@
+import React from "react";
+
+const App = () => {
+  const files = [
+    {
+      name: "Curriculum Vitae",
+      url: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
+    },
+    {
+      name: "Eligibility Certificate",
+      url: "https://www.w3.org/People/mimasa/test/imgformat/img/w3c_home.jpg",
+    },
+    {
+      name: "Event Rules and Regulations",
+      url: "https://www.w3.org/TR/PNG/iso_8859-1.txt",
+    },
+    {
+      name: "CheckList",
+      url: "https://www.w3.org/TR/PNG/iso_8859-1.txt",
+    },
+    {
+      name: "Event Brochure",
+      url: "https://www.w3.org/TR/PNG/iso_8859-1.txt",
+    },
+  ];
+
+  const handleDownload = (e) => {
+    const link = document.createElement("a");
+    link.href = e.target.value;
+    link.download = e.target.options[e.target.selectedIndex].text;
+    link.click();
+  };
+
+  return (
+    <div>
+      <h1>Download Dropdown</h1>
+      <select
+        onChange={handleDownload}
+        defaultValue=""
+        style={{
+          backgroundColor: "#FFE7CB",
+          padding: "10px",
+          borderRadius: "5px",
+        }}
+      >
+        <option value="" disabled>
+          Downloads
+        </option>
+        {files.map((file) => (
+          <option key={file.name} value={file.url}>
+            {file.name}
+          </option>
+        ))}
+      </select>
+    </div>
+  );
+};
+
+export default App;
 
